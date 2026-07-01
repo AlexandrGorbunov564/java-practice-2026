@@ -1,10 +1,7 @@
 package ru.itis.shop.user.api;
 
-import ru.itis.shop.user.domain.User;
-import ru.itis.shop.user.repository.UserRepository;
 import ru.itis.shop.user.application.UserService;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class UserConsoleOperations {
@@ -31,8 +28,8 @@ public class UserConsoleOperations {
                 signIn();
             }
             break;
-            case "3": {
-                findById();
+            case "4": {
+                updateInfo();
             }
             break;
             case "0": {
@@ -76,9 +73,20 @@ public class UserConsoleOperations {
         }
     }
 
-    private void findById() {
-        System.out.println("Введите id пользователя:");
-        String id = scanner.nextLine();
-        userService.findById(id);
+    private void updateInfo() {
+        System.out.println("Введите email:");
+        String email = scanner.nextLine();
+        if (userService.findByEmail(email)) {
+            System.out.println("Введите новое описание профиля:");
+            String newDescription = scanner.nextLine();
+            if (userService.updateInfo(email, newDescription)) {
+                System.out.println("Данные успешно обновлены");
+            } else {
+                System.err.println("Произошла ошибка");
+            }
+        } else {
+            System.out.println("Пользователь с таким email не найден");
+        }
     }
+
 }

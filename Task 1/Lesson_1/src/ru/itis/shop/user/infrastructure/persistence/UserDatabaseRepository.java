@@ -3,6 +3,8 @@ package ru.itis.shop.user.infrastructure.persistence;
 import ru.itis.shop.user.domain.User;
 import ru.itis.shop.user.repository.UserRepository;
 
+import java.util.Optional;
+
 public class UserDatabaseRepository implements UserRepository {
 
     @Override
@@ -11,9 +13,14 @@ public class UserDatabaseRepository implements UserRepository {
     }
 
     @Override
-    public User findById(String id) {
+    public Optional<User> findById(String id) {
         System.out.println("Получаем из базы данных...");
         //Пока не пишем ничего, базы данных нет
         return null;
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return Optional.empty();
     }
 }
