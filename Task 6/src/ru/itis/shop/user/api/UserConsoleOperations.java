@@ -46,12 +46,6 @@ public class UserConsoleOperations {
                 findAllByProfileDescription();
             }
             break;
-            case "7": {
-                String email = scanner.nextLine();
-                UserDto user = userService.getUserByEmail(email);
-                System.out.println(user.getId() + " " + user.getProfileDescription() + " ");
-            }
-            break;
             case "0": {
                 System.exit(0);
             }
@@ -65,7 +59,6 @@ public class UserConsoleOperations {
         System.out.println("4. Обновить описание пользователя по почте");
         System.out.println("5. Получить информацию обо всех пользователях");
         System.out.println("6. Показать информацию о пользователях с заданным описанием профиля");
-        System.out.println("7. Показать информацию о пользователя по email");
         System.out.println("0. Выход");
     }
 

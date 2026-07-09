@@ -16,12 +16,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public UserDto getUserByEmail(String email) {
-        User user = userRepository.findByEmail(email).orElseThrow(RuntimeException::new);
-
-        return new UserDto(user.getId(), user.getEmail(), user.getProfileDescription());
-    }
-
     public void signUp(String name, String email, String password, String profileDescription) {
         User user = new User(name, email, password, profileDescription);
         userRepository.save(user);
