@@ -93,8 +93,9 @@ public class UserConsoleOperations {
 
     private void findById() {
         System.out.println("Введите id");
-        Integer id = scanner.nextInt();
-        System.out.println(userService.findById(id).getEmail() + "    " + userService.findById(id).getProfileDescription());
+        Integer id = Integer.parseInt(scanner.nextLine());
+        UserDto user = userService.findById(id);
+        System.out.println(user.getEmail() + "    " + user.getProfileDescription());
     }
 
     private void updateInfo() {
